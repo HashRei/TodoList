@@ -9,7 +9,7 @@ import todosTemplate from "./data/todos.json";
 import "./App.scss";
 
 const App = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState<any[]>([]);
 
   useEffect(() => {
     setTodos(todosTemplate)

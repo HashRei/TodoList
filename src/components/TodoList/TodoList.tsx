@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { Key, useContext } from 'react';
 import { todosContext } from '../../TodosContext';
 import Checkbox from '../Checkbox/Checkbox';
 import './TodoList.scss';
@@ -6,15 +6,16 @@ import './TodoList.scss';
 export const TodoList = () => {
   const { todos, setTodos } = useContext(todosContext);
 
-  const handleDelete = (id) => {
+  const handleDelete = (id: any) => {
     // Fix an ability to delete task
+    setTodos((todos: any[]) => todos.filter((todos: { id: any; }) => todos.id !== id))
   };
 
-  const toggleCheck = (id) => {
+  const toggleCheck = (id: any) => {
     // Fix an ability to toggle task
   };
 
-  const handleKeyUp = (e, id) => {
+  const handleKeyUp = (e: { keyCode: number; }, id: any) => {
     if (e.keyCode === 13) {
       toggleCheck(id);
     }
@@ -26,13 +27,13 @@ export const TodoList = () => {
       <span className="TodoList__title">Things to do:</span>
       {todos.length ? (
         <div className="TodoList__content">
-          {todos.map((todoItem) => (
+          {todos.map((todoItem: { id: Key | null | undefined; label: any; checked: any; }) => (
             <Checkbox
               key={todoItem.id}
               label={todoItem.label}
               checked={todoItem.checked}
               onClick={() => toggleCheck(todoItem.id)}
-              onKeyUp={(e) => handleKeyUp(e, todoItem.id)}
+              onKeyUp={(e: any) => handleKeyUp(e, todoItem.id)}
               onDelete={() => handleDelete(todoItem.id)}
             />
           ))}
