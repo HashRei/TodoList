@@ -8,7 +8,10 @@ export const TodoForm = () => {
   const [task, setTask] = useState('');
 
   const handleAddTodo = () => {
-    // Fin an ability to add new task
+    // Find an ability to add new task
+    const fomratedTask = {id: todos.length, label: task, checked:false}
+    setTodos((todos) => [...todos, fomratedTask])
+    setTask("")
   };
 
   const handleKeyUp = (e) => {
