@@ -2,6 +2,9 @@
   "name": "recruitment-task",
   "version": "0.1.0",
   "private": true,
+  "compilerOptions": {
+    "noImplicitAny":true
+  },
   "dependencies": {
     "@types/node": "^16.11.57",
     "@types/react": "^18.0.18",
